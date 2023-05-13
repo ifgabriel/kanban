@@ -35,7 +35,7 @@ const Home = () => (
     <Heading textAlign="center" marginY={8}>TODO</Heading>
     <Grid templateColumns="repeat(3, 1fr)" gap={8}>
       {Object.values(STATES).map((state) => (
-        <List title={state} tasks={getTasksByState(state)} />
+        <List state={state} tasks={getTasksByState(state)} />
       ))}
     </Grid>
   </Container>

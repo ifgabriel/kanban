@@ -9,18 +9,17 @@ interface Params {
   state: string
 }
 
-const useFetchTasks = ({ state }: Params) => {
-  return useQuery(
-    ['use-fetch-tasks', state],
-    () => {
-      const path = makeUrl(endpoints.fetchTasks).interpolate({ state }).build()
+const useFetchTasks = ({ state }: Params) => useQuery(
+  ['fetch-tasks', state],
+  () => {
+    const path = makeUrl(endpoints.fetchTasks).interpolate({ state }).build()
 
-      return Api.get<string, RemoteTask[]>(path).then(({ data }) => data)
-    },
-    {
-      enabled: !!state,
-    },
-  )
-}
+    return Api.get<string, RemoteTask[]>(path).then(({ data }) => data)
+  },
+  {
+    enabled: !!state,
+  },
+)
+
 
 export default useFetchTasks
