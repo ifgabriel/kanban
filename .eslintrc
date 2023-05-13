@@ -2,7 +2,8 @@
   "extends": [
     "prettier",
     "eslint:recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:import/recommended"
   ],
   "plugins": ["prettier", "node"],
   "parserOptions": {

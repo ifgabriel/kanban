@@ -1,11 +1,9 @@
 import { Box, Heading, Skeleton } from '@chakra-ui/react'
 
-import { ModelTask, StateType } from '@domain'
-
-import Task from '../Task'
 import { useFetchTasks } from '@services'
 import { handleStateRender } from '@utils'
-import { ExceptionCard } from '@components'
+import { ExceptionCard, Task } from '@components'
+import { ModelTask, StateType } from '@domain'
 
 import styles from './styles.module.scss'
 
@@ -16,9 +14,9 @@ interface ListProps {
 
 const handleTitle = (title: StateType) => {
   const titles = {
-    TODO: 'To Do',
-    DOING: 'On Progress',
-    DONE: 'Done',
+    TODO: 'A Fazer',
+    DOING: 'Em Progresso',
+    DONE: 'Feito',
   }
 
   return titles[title]
@@ -47,8 +45,8 @@ const List = ({ state }: ListProps) => {
                 {Array.from({ length: 5 }).map((_, index) => <Skeleton key={index} width="100%" height="95px" />)}
               </Box>
             ),
-            error: <ExceptionCard type="ERROR" title="Oops! we had a problem" />,
-            empty: <ExceptionCard type="EMPTY" title="Oops! no tasks" />,
+            error: <ExceptionCard type="ERROR" title="Oops! Tivemos um problema" />,
+            empty: <ExceptionCard type="EMPTY" title="Oops! Não existe tarefas" />,
           }[handleStateRender(isFetched, data, !data?.length)]
         }
       </div>

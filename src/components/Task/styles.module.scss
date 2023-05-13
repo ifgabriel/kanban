@@ -1,0 +1,11 @@
+.Flex {
+  gap: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.Description {
+  align-items: flex-end;
+}
