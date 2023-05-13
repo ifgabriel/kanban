@@ -31,8 +31,8 @@ const getTasksByState = (state: StateType) => {
 }
 
 const Home = () => (
-  <Container maxW="container.xl">
-    <Heading textAlign="center" marginY={8}>TODO</Heading>
+  <Container maxW="container.xl" paddingY={10}>
+    <Heading textAlign="center" marginBottom={8}>TODO</Heading>
     <Grid templateColumns="repeat(3, 1fr)" gap={8}>
       {Object.values(STATES).map((state) => (
         <List state={state} tasks={getTasksByState(state)} />
