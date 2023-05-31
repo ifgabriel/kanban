@@ -1,19 +1,18 @@
-import { Box, Heading, Skeleton } from '@chakra-ui/react'
+import { Box, Heading, Skeleton, Text } from '@chakra-ui/react'
 
+import { ExceptionCard, Task } from '@components'
+import { StateType } from '@domain'
 import { useFetchTasks } from '@services'
 import { handleStateRender } from '@utils'
-import { ExceptionCard, Task } from '@components'
-import { ModelTask, StateType } from '@domain'
 
 import styles from './styles.module.scss'
 
 interface ListProps {
   state: StateType,
-  tasks: ModelTask[]
 }
 
 const handleTitle = (title: StateType) => {
-  const titles = {
+  const titles: Record<StateType, string> = {
     TODO: 'A Fazer',
     DOING: 'Em Progresso',
     DONE: 'Feito',
@@ -26,8 +25,12 @@ const List = ({ state }: ListProps) => {
   const { data, isFetched } = useFetchTasks({ state })
 
   return (
-    <Box bgColor='gray.700' className={styles.Container}>
-      <Heading size="lg">{handleTitle(state)}</Heading>
+    <Box bgColor='gray.200' className={styles.Container}>
+      <Heading size="lg">{handleTitle(state)} 
+      <Text className={styles.Counter} fontSize='sm' bgColor='gray.300'>
+        {data?.length}
+        </Text>
+      </Heading>
       <div>
         {
           {

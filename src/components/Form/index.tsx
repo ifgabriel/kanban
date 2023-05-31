@@ -1,9 +1,8 @@
-import { ReactNode, memo } from 'react'
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
 import {
-  useToast,
   Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
   Input,
   Modal,
   ModalBody,
@@ -12,20 +11,21 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Textarea,
   Select,
-  FormControl,
-  FormLabel,
+  Textarea,
   ToastPosition,
-  FormErrorMessage
+  useToast
 } from '@chakra-ui/react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { ReactNode, memo } from 'react'
+import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
 import { ModelTask } from '@domain'
 import { useEditTask } from '@services'
 
 import styles from './styles.module.scss'
-import { FormProps, StateOptions, PriorityOptions } from './types'
+import { FormProps, PriorityOptions, StateOptions } from './types'
 
 interface FieldProps {
   name: string,
